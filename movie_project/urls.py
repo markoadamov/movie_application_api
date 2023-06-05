@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
+from users.views import RegisterView
+from users.views import EmailTokenObtainPairView, RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/obtain/', EmailTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('register/', RegisterView.as_view(), name='token_obtain_pair'),
 ]
