@@ -11,4 +11,7 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('email', 'password')
+        fields = ('email', 'first_name', 'last_name', 'password')
+
+    def save(self):
+        user = CustomUser.objects.create_user(**self.validated_data)
